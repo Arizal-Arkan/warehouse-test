@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+//Component
+import Layout from "./components/layout/layout";
+import ListWarehouse from "./page/listWarehouse";
+import DetailWarehouse from "./page/detailWarehouse";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <Layout>
+        <Router>
+          <Routes>
+            <Route path="/" element={<ListWarehouse />} />
+            <Route path="/detail/:id" element={<DetailWarehouse />} />
+          </Routes>
+        </Router>
+      </Layout>
+    </Box>
   );
-}
+};
 
 export default App;
